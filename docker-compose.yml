@@ -25,6 +25,10 @@ services:
       - cert-data:/data/certs
     environment:
       CERT_POLL_INTERVAL: "0.5"
+      # 接入保护：握手超时秒数、待握手连接上限、listen backlog
+      TLS_HANDSHAKE_TIMEOUT: "10"
+      TLS_MAX_PENDING_HANDSHAKES: "128"
+      TLS_ACCEPT_BACKLOG: "128"
     depends_on:
       mgmt:
         condition: service_healthy
